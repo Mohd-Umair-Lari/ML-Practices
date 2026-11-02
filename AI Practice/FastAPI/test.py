@@ -1,19 +1,16 @@
 from fastapi import FastAPI
-import asyncio
 
-app = FastAPI()
+app=FastAPI()
 
-async def get_burger(n:int):
-    await asyncio.sleep(n)
-    return n;
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-@app.get("/wait={n},{m}")
-async def wait(n:int):
-    result=await get_burger(n)
+app.get("/")
+def hello():
     return {
-        "Time served" : result,
+        "message" : "Hello your site is live"
     }
+
+@app.get("/about")
+def about():
+    return {
+        'mesage' : 'this is the about page for the web app'
+    }
+
